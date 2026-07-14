@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
+potato-app/node_modules/
+potato-app/dist/
+potato-app/.env
+
+# Model (large binary — add back if you want it in the repo)
+*.keras
+*.h5
+
+# OS
+.DS_Store
+Thumbs.db
