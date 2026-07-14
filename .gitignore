@@ -15,8 +15,8 @@ potato-app/dist/
 potato-app/.env
 
 # Model (large binary — add back if you want it in the repo)
-*.keras
-*.h5
+# *.keras
+# *.h5
 
 # OS
 .DS_Store
