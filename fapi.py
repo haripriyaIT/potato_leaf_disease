@@ -1,4 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import numpy as np
 from io import BytesIO
@@ -6,6 +7,13 @@ from PIL import Image
 import tensorflow as tf
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # tighten this to your frontend URL after deploying
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 MODEL = tf.keras.models.load_model("my_model_v1.keras")
 CLASS_NAMES = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
@@ -38,4 +46,4 @@ async def predict(
    }
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='localhost', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=8000)

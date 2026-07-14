@@ -2,6 +2,8 @@ import { useState, useRef, useCallback } from 'react'
 
 // ── disease metadata ──────────────────────────────────────────────────────────
 
+const API_BASE = import.meta.env.VITE_API_URL ?? ''
+
 const CLASS_META = {
   Potato___Early_blight: {
     label: 'Early Blight',
@@ -183,7 +185,7 @@ export default function App() {
     try {
       const form = new FormData()
       form.append('file', image.file)
-      const res = await fetch('/predict', { method: 'POST', body: form })
+      const res = await fetch(`${API_BASE}/predict`, { method: 'POST', body: form })
       if (!res.ok) throw new Error(`Server error: ${res.status}`)
       setResult(await res.json())
     } catch (err) {
